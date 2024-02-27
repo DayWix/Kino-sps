@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervace místenek</title>
+    <link rel="stylesheet" href="Css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+    .seat {
+    width: 28px;
+    height: 28px;
+    margin: 5px;
+    background-image:url(sedadlo.png);
+    border: 1px solid #aaa;
+    display: inline-block;
+    text-align: center;
+    
+    }
+    .seat.registred {
+       
+        width: 31px;
+        height: 31px;
+        margin: 5px;
+        border: 3px solid red;
+        color: white;
+        background-color: #ff3232;
+    }
+   
+    </style>
+    <script src="Script/js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Rezervace míst</h1>
+    </header>
+
+    <main>
+        <h2>Vyberte si sedadlo</h2>
+        <div class="center">
+            <div >
+            <div class="seat" id="A1"> </div>
+            <div class="seat" id="A2"> </div>
+            <div class="seat" id="A3"> </div>
+            <div class="seat" id="A4"> </div>
+            <div class="seat" id="A5"> </div>
+            <div class="seat" id="A6"> </div>
+            <div class="seat" id="A7"> </div>
+            <div class="seat" id="A8"> </div>
+            <div class="seat" id="A9"> </div>
+            <div class="seat" id="A10"> </div>
+        </div> 
+        
+        <div>
+            <div class="seat" id="B1"> </div>
+            <div class="seat" id="B2"> </div>
+            <div class="seat" id="B3"> </div>
+            <div class="seat" id="B4"> </div>
+            <div class="seat" id="B5"> </div>
+            <div class="seat" id="B6"> </div>
+            <div class="seat" id="B7"> </div>
+            <div class="seat" id="B8"> </div>
+            <div class="seat" id="B9"> </div>
+            <div class="seat" id="B10"> </div>
+        </div>
+        <div>
+            <div class="seat" id="C1"> </div>
+            <div class="seat" id="C2"> </div>
+            <div class="seat" id="C3"> </div>
+            <div class="seat" id="C4"> </div>
+            <div class="seat" id="C5"> </div>
+            <div class="seat" id="C6"> </div>
+            <div class="seat" id="C7"> </div>
+            <div class="seat" id="C8"> </div>
+            <div class="seat" id="C9"> </div>
+            <div class="seat" id="C10"> </div>
+        </div>
+        <div>
+            <div class="seat" id="D1"> </div>
+            <div class="seat" id="D2"> </div>
+            <div class="seat" id="D3"> </div>
+            <div class="seat" id="D4"> </div>
+            <div class="seat" id="D5"> </div>
+            <div class="seat" id="D6"> </div>
+            <div class="seat" id="D7"> </div>
+            <div class="seat" id="D8"> </div>
+            <div class="seat" id="D9"> </div>
+            <div class="seat" id="D10"> </div>
+        </div>
+        <div>
+            <div class="seat" id="E1"> </div>
+            <div class="seat" id="E2"> </div>
+            <div class="seat" id="E3"> </div>
+            <div class="seat" id="E4"> </div>
+            <div class="seat" id="E5"> </div>
+            <div class="seat" id="E6"> </div>
+            <div class="seat" id="E7"> </div>
+            <div class="seat" id="E8"> </div>
+            <div class="seat" id="E9"> </div>
+            <div class="seat" id="E10"> </div>
+        </div>
+
+
+       
+        
+        
+        </div>
+        
+    </main>
+       
+    <div class="blok">
+        <div class="inputs">
+            <label for="name"> Jméno:</label>
+            <input type="text" id="name" name="jmeno">
+        </div>
+        <div class="inputs">
+            <label for="surname">Příjmení: <input type="text" id="surname" name="prijmeni" > </label>
+            
+        </div>
+        <div class="inputs">
+            <label for="time" > Čas:</label>
+            <input type="time" id="time" name="cas">
+        </div>
+        
+        
+        <button type="button" id="SubRes" class="btn btn-success">Rezervovat</button>
+    </div>
+
+    <!-- Modální okno pro potvrzení rezervace -->
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Potvrzení rezervace</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                Vaše rezervace byla úspěšně potvrzena.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavřít</button>
+                </div>
+            </div>
+            </div>
+        </div>
+  
+
+        
+    <script>
+        const SubReser = document.getElementById("SubRes")
+        SubReser.addEventListener("click",submitReservation)
+        
+        for (var i = 0; i < localStorage.length; i++) {
+        var keys = localStorage.key(i).split(" "); // Rozdělit klíče pomocí mezery
+        keys.forEach(function(key) {
+        var seatElement = document.getElementById(key);
+        if (seatElement) {
+            seatElement.classList.add('registred');
+        }
+    });
+    }
+
+
+       
+     
+    </script>
+    
+</body>
+</html>
