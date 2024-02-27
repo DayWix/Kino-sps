@@ -1,9 +1,9 @@
 const selectedSeats = [];
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { 
     const seats = document.querySelectorAll('.seat');
      
     seats.forEach(seat => {
-        seat.addEventListener('click', function() {
+        seat.addEventListener('click', function() { //přidání funkcce click a funkce při kliknutí přidá class selected
             seat.classList.toggle('selected');
             const selectedSeatId = seat.id; 
 
@@ -28,7 +28,7 @@ function submitReservation() {
     var jmeno = document.getElementById('name').value;
     var prijmeni = document.getElementById('surname').value;
     var cas = document.getElementById('time').value;
-    const registrace = jmeno + ' ' + prijmeni + ', ' + cas;
+    const registrace = jmeno + ' ' + prijmeni + ', ' + cas; //uložení do local storage
 
     selectedSeats.forEach(seatId => {
         if (!localStorage.getItem(seatId)) { // Kontrola, zda sedadlo není již rezervováno
@@ -36,9 +36,9 @@ function submitReservation() {
         }
         
         const seat = document.getElementById(seatId);
-        seat.className = 'seat'; 
+        seat.className = 'seat'; //nastavím jen classu seat náskedně přidám reserved
         seat.classList.add('registred');
-        seat.title = registrace;
+        seat.title = registrace; // přidání title při najetí zobrazí info o sedadle
     });
     var myModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
     myModal.show();
