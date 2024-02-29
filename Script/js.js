@@ -28,18 +28,22 @@ function submitReservation() {
     var jmeno = document.getElementById('name').value;
     var prijmeni = document.getElementById('surname').value;
     var cas = document.getElementById('time').value;
-    const registrace = jmeno + ' ' + prijmeni + ', ' + cas; //uložení do local storage
+    const registrace = jmeno + ' ' + prijmeni + ', ' + cas; // Uložení do localStorage
 
     selectedSeats.forEach(seatId => {
         if (!localStorage.getItem(seatId)) { // Kontrola, zda sedadlo není již rezervováno
             localStorage.setItem(seatId, registrace);
+        } else {
+            const existingReservation = localStorage.getItem(seatId);
+            const updatedReservation = existingReservation;
+            localStorage.setItem(seatId, updatedReservation);
         }
         
         const seat = document.getElementById(seatId);
-        seat.className = 'seat'; //nastavím jen classu seat náskedně přidám reserved
-        seat.classList.add('registred');
-        seat.title = registrace; // přidání title při najetí zobrazí info o sedadle
+        seat.className = 'seat registred'; // Přidání třídy "registred" pro označení rezervovaného sedadla
+        seat.title = localStorage.getItem(seatId); // Přidání všech rezervací jako titulek sedadla
     });
+    
     var myModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
     myModal.show();
 }
