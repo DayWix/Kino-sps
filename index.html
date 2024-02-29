@@ -159,6 +159,7 @@
         var seatElement = document.getElementById(key);
         if (seatElement) {
             seatElement.classList.add('registred');
+            seatElement.title = localStorage.getItem(key);
         }
     });
     }
